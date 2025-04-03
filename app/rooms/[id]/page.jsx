@@ -3,6 +3,8 @@ import rooms from '@/data/rooms.json'
 import Heading from '@/app/components/Heading';
 import { FaChevronLeft } from 'react-icons/fa';
 import Image from 'next/image';
+import BookingForm from '@/app/components/BookingForm';
+import Link from 'next/link';
 
 const RoomPage = async ({ params }) => {
     const { id } = await params;
@@ -15,10 +17,10 @@ const RoomPage = async ({ params }) => {
     <>
         <Heading title={ room.name } />
         <div className="bg-white shadow rounded-lg p-6">
-            <a href="/rooms.html" className='flex items-center text-gray-600 hover:text-gray-800 mb-4'>
+            <Link href="/" className='flex items-center text-gray-600 hover:text-gray-800 mb-4'>
                 <FaChevronLeft className='inline mr-1'/>
                 <span className="ml-2">Back to Rooms</span>
-            </a>
+            </Link>
 
             <div className="flex flex-col sm:flex-row sm:space-x-6">
                 <Image 
@@ -51,7 +53,7 @@ const RoomPage = async ({ params }) => {
                     </ul> 
                 </div>
             </div>
-         
+            <BookingForm />
         </div>
     </>
   )
