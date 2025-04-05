@@ -1,6 +1,5 @@
 'use server';
 
-import { revalidatePath } from "next/cache";
 import { createAdminClient } from "../config/appwrite";
 import { redirect } from "next/navigation";
 
@@ -14,12 +13,11 @@ async function getAllRooms() {
             process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ROOMS
         );
 
-        // Revalidate the cache for this pache
-        revalidatePath('/', 'layout');
-
         return rooms;
     } catch (error) {
         console.log('Failed to get rooms', error);
         redirect('/error');
     }
 }
+
+export default getAllRooms;
