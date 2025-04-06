@@ -17,10 +17,10 @@ const Header = () => {
                             <Link href="/" className='rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
                                 Rooms
                             </Link>
-                            <Link href="/bookings.html" className='rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
+                            <Link href="/bookings" className='rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
                                 Bookings
                             </Link>
-                            <Link href="/add-room.html" className='rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
+                            <Link href="/rooms/add" className='rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
                                 Add Room
                             </Link>
                         </div>
@@ -30,16 +30,16 @@ const Header = () => {
                 <div className="ml-auto">
                     <div className="ml-4 flex items-center md:ml-6">
                     {/* <!--Logged out only --> */}
-                        <Link href="/login.html" className='mr-3 text-gray-800 hover:text-gray-600'>
+                        <Link href="/login" className='mr-3 text-gray-800 hover:text-gray-600'>
                             <FaSignInAlt className="inline mr-1" /> Login
                         </Link>
-                        <Link href="/register.html" className='mr-3 text-gray-800 hover:text-gray-600'>
+                        <Link href="/register" className='mr-3 text-gray-800 hover:text-gray-600'>
                             <FaUser className="inline mr-1" /> Register
                         </Link>
-                        <Link href="/my-rooms.html" className='mr-3 text-gray-800 hover:text-gray-600'>
+                        <Link href="/rooms/my" className='mr-3 text-gray-800 hover:text-gray-600'>
                             <FaBuilding className="inline mr-1" /> My Rooms
                         </Link>
-                        <Link href="/login.html" className='mr-3 text-gray-800 hover:text-gray-600'>
+                        <Link href="/login" className='mr-3 text-gray-800 hover:text-gray-600'>
                             <FaSignOutAlt className="inline mr-1" /> Sign-Out
                         </Link>
                     </div>
@@ -54,10 +54,10 @@ const Header = () => {
                     Rooms
                 </a>
                 {/* <!-- Logged In Only --> */}
-                <a href="/bookings.html" className='block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
+                <a href="/bookings" className='block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
                     Bookings
                 </a>
-                <a href="/add-room.html" className='block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
+                <a href="/rooms/add" className='block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white'>
                     Add Room
                 </a>
             </div>
