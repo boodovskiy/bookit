@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
 
 export async function middleware(request) {
-    const { pathname } = request.nextUrl;
+    const isAuthenticated = false;
 
-    console.log(`Requested Page: ${pathname}`);
+    if (!isAuthenticated){
+        return NextResponse.redirect(new URL('/login', request.url));
+    }
 
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: ['/login'],
+    matcher: ['/bookings'],
 }
