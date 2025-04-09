@@ -1,14 +1,14 @@
 'use client';
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React, { useEffect, useActionState } from 'react'
 import createSession from '../actions/createSession'
-import { useFormState } from 'react-dom';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
-    const [state, formAction] = useFormState(createSession, {});
+    const [state, formAction] = useActionState(createSession, {});
 
     useEffect(() => {
-        if (state.error) console.log(state.error);
+        if (state?.error) toast.error(state.error);
     }, [state])
 
   return (
