@@ -3,12 +3,18 @@ import Link from 'next/link'
 import React, { useEffect, useActionState } from 'react'
 import createSession from '../actions/createSession'
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
     const [state, formAction] = useActionState(createSession, {});
+    const router = useRouter();
 
     useEffect(() => {
         if (state?.error) toast.error(state.error);
+        if (state?.success) {
+            toast.success('Logged in successfully!');
+            router.push('/');
+        }
     }, [state])
 
   return (
