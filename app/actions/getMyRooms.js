@@ -6,7 +6,8 @@ import { redirect } from "next/navigation";
 import { Query } from "node-appwrite";
 
 async function getMyRooms() {
-    const sessionCookie = cookies().get('appwrite-session');
+    const cookieStore = await cookies();
+    const sessionCookie = cookieStore.get('appwrite-session');
     if (!sessionCookie) {
         redirect('/login');
     }
