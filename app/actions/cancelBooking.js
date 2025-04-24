@@ -17,7 +17,7 @@ async function cancelBooking(bookingId) {
         const { databases } = await createSessionClient(sessionCookie.value);
 
         // Get the users ID
-        const {user} = await checkAuth
+        const {user} = await checkAuth();
         
         if (!user) {
             return {
