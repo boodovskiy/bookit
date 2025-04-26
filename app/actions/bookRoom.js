@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { ID } from "node-appwrite";
 import checkAuth from "./checkAuth";
 import { revalidatePath } from "next/cache";
+import checkRoomAvailability from "./checkRoomAvailability";
 
 async function bookRoom(prevState, formData) {
     const cookieStore = await cookies();
@@ -31,14 +32,24 @@ async function bookRoom(prevState, formData) {
         const checkInTime = formData.get('check_in_time');
         const checkOutDate = formData.get('check_out_date');
         const checkOutTime = formData.get('check_out_time');
+        const roomId = formData.get('room_id');
         
         // Combine the date and time into ISO 8601 format
         const checkInDateTime = `${checkInDate}T${checkInTime}`;
         const checkOutDateTime = `${checkOutDate}T${checkOutTime}`;
 
+        // Check if the room is available for the selected dates
+        const isAvailable = await checkRoomAvailability(roomId, checkInDateTime, checkOutDateTime);
+
+        if (!isAvailable) {
+            return {
+                error: 'Room is not available for the selected dates.',
+            }
+        }
+
         const bookingData = {
             user_id: user.id,
-            room_id: formData.get('room_id'),
+            room_id: roomId,
             check_in: checkInDateTime,
             check_out: checkOutDateTime,
         }
